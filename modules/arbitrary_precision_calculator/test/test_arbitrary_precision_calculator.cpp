@@ -328,7 +328,7 @@ TEST_F(ArbitraryPrecisionCalculatorTest, Cannot_Divide_By_Zero) {
     ArbitraryPrecisionCalculator z2("0");
 
     // Act & Assert
-    EXPECT_THROW(z1 / z2, std::string);
+    ASSERT_ANY_THROW(z1 / z2);
 }
 
 TEST_F(ArbitraryPrecisionCalculatorTest, Number_Is_Equal_To_Itself) {
