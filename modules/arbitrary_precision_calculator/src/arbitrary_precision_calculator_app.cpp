@@ -12,8 +12,8 @@
 #include "include/arbitrary_precision_calculator.h"
 #include "include/arbitrary_precision_calculator_app.h"
 
-ArbitraryPrecisionCalculatorApp::ArbitraryPrecisionCalculatorApp() :
-    message_("") {}
+ArbitraryPrecisionCalculatorApp::
+ArbitraryPrecisionCalculatorApp() : message_("") {}
 
 void ArbitraryPrecisionCalculatorApp::help(const char* appname,
     const char* message) {
