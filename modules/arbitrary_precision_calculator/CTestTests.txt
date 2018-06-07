@@ -16,7 +16,7 @@ add_test(
     COMMAND ${APPLICATION}
 )
 set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
-    PASS_REGULAR_EXPRESSION "This is a big number calculator application"
+    PASS_REGULAR_EXPRESSION "This is an arbitrary precision calculator application"
     LABELS "${MODULE}")
 
 add_test(
