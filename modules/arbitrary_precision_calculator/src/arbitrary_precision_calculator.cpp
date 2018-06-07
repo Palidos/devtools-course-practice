@@ -21,8 +21,7 @@ ArbitraryPrecisionCalculator::ArbitraryPrecisionCalculator
 
     if (s[0] == '-') {
         number.push_back(-1 * (static_cast<int>(s[1]) - 48));
-    }
-    else {
+    } else {
         if (s[1] != '\0')
             number.push_back(static_cast<int>(s[1]) - 48);
         number.push_back(static_cast<int>(s[0]) - 48);
@@ -62,8 +61,7 @@ operator+(const ArbitraryPrecisionCalculator& z) const {
     int size;
     if ((*this).number.size() > z.number.size()) {
         size = (*this).number.size();
-    }
-    else {
+    } else {
         size = z.number.size();
     }
 
@@ -130,8 +128,7 @@ operator-(const ArbitraryPrecisionCalculator& z) const {
     int size;
     if ((*this).number.size() > z.number.size()) {
         size = (*this).number.size();
-    }
-    else {
+    } else {
         size = z.number.size();
     }
 
@@ -209,7 +206,8 @@ operator*(const ArbitraryPrecisionCalculator& z) const {
             continue;
         }
         for (i = 0; i < size_2; i++) {
-            int tmp = (*this).number[i] * z.number[j] + (*result).number[i + j] + k;
+            int tmp = (*this).number[i] * z.number[j] +
+                (*result).number[i + j] + k;
             (*result).number[i + j] = tmp % 10;
             k = tmp / 10;
         }

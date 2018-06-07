@@ -8,7 +8,7 @@
 #include "include/arbitrary_precision_calculator.h"
 
 class ArbitraryPrecisionCalculatorTest : public ::testing::Test {
-protected:
+ protected:
     double epsilon = 0.001;
 };
 

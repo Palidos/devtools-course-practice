@@ -33,8 +33,7 @@ bool ArbitraryPrecisionCalculatorApp::validateNumberOfArguments
     if (argc == 1) {
         help(argv[0]);
         return false;
-    }
-    else if (argc != 4) {
+    } else if (argc != 4) {
         help(argv[0], "ERROR: Should be 3 arguments.\n\n");
         return false;
     }
@@ -60,8 +59,7 @@ std::vector <int> parseNumber(const char* arg) {
 
     if (arg[0] == '-') {
         number.push_back(-1 * (static_cast<int>(arg[1]) - 48));
-    }
-    else {
+    } else {
         if (arg[1] != '\0')
             number.push_back(static_cast<int>(arg[1]) - 48);
         number.push_back(static_cast<int>(arg[0]) - 48);
@@ -77,17 +75,13 @@ char parseOperation(const char* arg) {
     char op;
     if (strcmp(arg, "+") == 0) {
         op = '+';
-    }
-    else if (strcmp(arg, "-") == 0) {
+    } else if (strcmp(arg, "-") == 0) {
         op = '-';
-    }
-    else if (strcmp(arg, "*") == 0) {
+    } else if (strcmp(arg, "*") == 0) {
         op = '*';
-    }
-    else if (strcmp(arg, "/") == 0) {
+    } else if (strcmp(arg, "/") == 0) {
         op = '/';
-    }
-    else {
+    } else {
         throw std::string("Wrong operation format!");
     }
     return op;
