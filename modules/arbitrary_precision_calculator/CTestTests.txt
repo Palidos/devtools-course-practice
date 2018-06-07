@@ -1,0 +1,100 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a big number calculator application"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 3 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 85 go /
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} 123 123 garbage
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Add_Long_Numbers
+    COMMAND ${APPLICATION} 46782382032574853849803565 257485384980356552284513453423525 +
+)
+set_tests_properties (${prefix}_can_Add_Long_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: 257485431762738584859367303227090"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Add_Negatives
+    COMMAND ${APPLICATION} -23345678909876543578876543 56787654345678909876543 +
+)
+set_tests_properties (${prefix}_can_Add_Negatives PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: -23288891255530864669000000"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Subtract_Long_Numbers
+    COMMAND ${APPLICATION} 4563746954394453687695 9856528520685476802455354435464 -
+)
+set_tests_properties (${prefix}_can_Subtract_Long_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: -9856528516121729848060900747769"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Subtract_Negatives
+    COMMAND ${APPLICATION} -5247952962546546524265 9856528520685476802455354435464 -
+)
+set_tests_properties (${prefix}_can_Subtract_Negatives PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: -9856528525933429765001900959729"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Multiply_Long_Numbers
+    COMMAND ${APPLICATION} 9856528516121729848060900747 575398440289675084055 *
+)
+set_tests_properties (${prefix}_can_Multiply_Long_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: 5671431134847148931073745831167678482646237289085"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Divide_Long_Numbers
+    COMMAND ${APPLICATION} 946981297153777552569472063256698346999966162796 217563985493242654645645554 /
+)
+set_tests_properties (${prefix}_can_Divide_Long_Numbers PROPERTIES
+    PASS_REGULAR_EXPRESSION "Result: 4352656507035673676774"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Division_By_Zero
+    COMMAND ${APPLICATION} 946981297153777552569472065974932335 0 /
+)
+set_tests_properties (${prefix}_can_Detect_Division_By_Zero PROPERTIES
+    PASS_REGULAR_EXPRESSION "Can't divide by zero"
+    LABELS "${MODULE}")
